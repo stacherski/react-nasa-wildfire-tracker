@@ -1,18 +1,11 @@
 import GoogleMapReact from "google-map-react"
 import LocationMarker from "./LocationMarker"
-
-
-const NATURAL_EVENT_WILDFIRE = 8;
+import LocationInfoBox from "./LocationInfoBox"
 
 const Map = ({ eventData, center, zoom }) => {
 
-    const markers = eventData.map((ev) => {
-        if(ev.events.categories[0].id === NATURAL_EVENT_WILDFIRE) {
-            return (
-            <LocationMarker key={ev.events.id} lat={ev.events.geometries[0].coordinates[1]} lng={ev.events.geometries[0].coordinates[0]} />
-            )
-        }
-        return null
+    const markers = eventData.map((ev, index) => {
+            return <LocationMarker key={index} lat={ev.geometries[0].coordinates[1]} lng={ev.geometries[0].coordinates[0]}/>
     })
     return (
         <div className="map">
@@ -21,10 +14,8 @@ const Map = ({ eventData, center, zoom }) => {
                 defaultCenter={center}
                 defaultZoom={zoom}
             >
-            
             {markers}
-            
-            </GoogleMapReact>        
+            </GoogleMapReact>
         </div>
     )
 
@@ -32,10 +23,10 @@ const Map = ({ eventData, center, zoom }) => {
 
 Map.defaultProps = {
     center: {
-        lat: 42.3465,
-        lng: -122.8756
+        lat: 51.127057,
+        lng: 16.9218248
     },
-    zoom: 6
+    zoom: 5
 }
 
 export default Map

@@ -2,10 +2,10 @@ import {Icon} from '@iconify/react'
 
 import locationIcon from '@iconify/icons-mdi/fire-alert'
 
-const LocationMarker = ({ lat, lng }) => {
+const LocationMarker = ({ onClick, lat, lng }) => {
 
     return (
-        <div className="location-marker">
+        <div className="location-marker cursor-pointer hover:animate-pulse">
             <Icon icon={locationIcon} className="location-icon" />
         </div>
     )
